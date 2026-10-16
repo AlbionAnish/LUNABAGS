@@ -1,0 +1,561 @@
+/* ==========================================================================
+   LUNÉA Bags
+   1. Tokens   2. Base   3. Components   4. Header   5. Hero   6. Features
+   7. Shop     8. About  9. CTA          10. Footer  11. Reduced motion
+   ========================================================================== */
+
+/* 1. Tokens ---------------------------------------------------------------- */
+:root {
+    --color-dark: #1a1a1a;
+    --color-text: #111;
+    --color-muted: #666;
+    --color-soft: #f8f8f8;
+    --color-white: #fff;
+
+    --font-body: "Montserrat", sans-serif;
+    --font-heading: "DM Sans", sans-serif;
+    --font-logo: "Bodoni Moda", Didot, Georgia, serif;
+
+    --container: 1000px;
+    --gutter: 24px;
+}
+
+/* 2. Base ------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-text);
+    background: var(--color-white);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+/* 3. Components ------------------------------------------------------------ */
+.container {
+    width: min(100% - 2 * var(--gutter), var(--container));
+    margin-inline: auto;
+}
+
+.icon {
+    display: block;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: var(--gutter);
+    z-index: 200;
+    padding: 10px 16px;
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+.skip-link:focus {
+    top: 12px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border: 1px solid var(--color-dark);
+    background: var(--color-dark);
+    color: var(--color-white);
+    font-size: 13px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+.btn--light {
+    padding: 13px 56px;
+    border-color: var(--color-white);
+    background: var(--color-white);
+    color: #222;
+    font-weight: 400;
+}
+
+.btn--light:hover {
+    background: transparent;
+    color: var(--color-white);
+}
+
+/* 4. Header ---------------------------------------------------------------- */
+.site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    color: var(--color-white);
+    transition: background-color 0.3s ease;
+}
+
+.site-header.is-solid {
+    background: var(--color-dark);
+}
+
+.site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(100% - 2 * var(--gutter), 1100px);
+    margin-inline: auto;
+    padding-block: 18px;
+    font-size: 14px;
+}
+
+.site-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.site-nav a {
+    border-bottom: 1px solid transparent;
+    padding-block: 2px;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+    border-bottom-color: currentColor;
+}
+
+.cart-link {
+    display: flex;
+}
+
+/* 5. Hero ------------------------------------------------------------------ */
+.hero {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 96px var(--gutter) 120px;
+    background: url("Assets/Images/bg.png") center / cover no-repeat;
+    color: var(--color-white);
+    text-align: center;
+    font-family: var(--font-heading);
+}
+
+.hero::before {                         /* dark overlay */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgb(6 6 6 / 18%);
+}
+
+.hero h1 {
+    position: relative;
+    font-size: clamp(2.5rem, 8vw, 4.125rem);
+    font-weight: 200;
+    line-height: 1.1;
+}
+
+.hero p {
+    position: absolute;
+    inset-inline: var(--gutter);
+    bottom: 70px;
+    font-size: 14px;
+}
+
+/* 6. Features -------------------------------------------------------------- */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px 80px;
+    padding: 48px var(--gutter);
+    background: var(--color-soft);
+    color: #333;
+    font-size: 15px;
+}
+
+.features li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.features .icon {
+    width: 32px;
+    height: 32px;
+}
+
+@media (max-width: 700px) {
+    .features {
+        display: grid;
+        grid-template-columns: max-content;     /* keeps the checkmarks aligned */
+        justify-content: center;
+        gap: 20px;
+        padding-block: 32px;
+    }
+}
+
+/* 7. Shop ------------------------------------------------------------------ */
+.shop {
+    padding-block: clamp(48px, 8vw, 80px);
+    background: var(--color-soft);
+    font-family: var(--font-heading);
+}
+
+.section-head {
+    max-width: 600px;
+    margin: 0 auto clamp(32px, 5vw, 56px);
+    text-align: center;
+}
+
+.section-head h2 {
+    font-size: clamp(1.5rem, 4vw, 1.75rem);
+    font-weight: 500;
+}
+
+.section-head p {
+    margin-top: 24px;
+    color: var(--color-muted);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px 12px;
+}
+
+.card {
+    display: block;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 6 / 7;
+    object-fit: cover;
+    background: #e9e9e9;                        /* placeholder while loading */
+    transition: opacity 0.2s ease;
+}
+
+.card:hover img {
+    opacity: 0.9;
+}
+
+.card__name {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.card__name::after {
+    content: "\25B8";
+    margin-left: 8px;
+    font-size: 8px;
+    vertical-align: middle;
+}
+
+.card__price {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--color-muted);
+}
+
+.shop__more {
+    display: block;
+    width: fit-content;
+    margin: 56px auto 0;
+    color: var(--color-muted);
+}
+
+.shop__more:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 800px) {
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px 10px;
+    }
+}
+
+/* 8. About ----------------------------------------------------------------- */
+.about {
+    padding-block: clamp(64px, 10vw, 120px);
+}
+
+.about__inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: clamp(32px, 8vw, 110px);
+}
+
+.about__image {
+    width: 100%;
+    aspect-ratio: 4 / 5;                        /* adjust to match your photo */
+    object-fit: cover;
+}
+
+.about__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.about__text h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.about__text h3 {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.about__text p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+    .about__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .about__image {
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* 9. Call to action -------------------------------------------------------- */
+.cta {
+    position: relative;
+    isolation: isolate;                         /* keeps image/overlay layers inside */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    padding: 110px var(--gutter) 56px;
+    overflow: hidden;
+    color: var(--color-white);
+    text-align: center;
+}
+
+.cta__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cta::before {                                  /* dark overlay */
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgb(0 0 0 / 35%);
+}
+
+.cta h2 {
+    margin-bottom: 16px;
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.cta p {
+    max-width: 300px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+@media (max-width: 600px) {
+    .cta {
+        padding-block: 64px;
+    }
+
+    .cta h2 {
+        font-size: 20px;
+    }
+}
+
+/* 10. Footer --------------------------------------------------------------- */
+.site-footer {
+    padding-block: 48px;
+    background: var(--color-dark);
+    color: var(--color-white);
+    font-size: 14px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.75fr 1.15fr 36px;
+    grid-template-areas:
+        "logo tagline info social"
+        "logo nav     mail social"
+        "logo copy    .    social";
+    column-gap: 24px;
+    row-gap: 42px;
+    align-items: start;
+}
+
+.footer-logo    { grid-area: logo; }
+.footer-tagline { grid-area: tagline; }
+.footer-nav     { grid-area: nav; }
+.footer-copy    { grid-area: copy; }
+.footer-info    { grid-area: info; }
+.footer-mail    { grid-area: mail; }
+.footer-social  { grid-area: social; }
+
+.footer-logo {
+    justify-self: start;
+    font-family: var(--font-logo);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.footer-tagline,
+.footer-info {
+    font-weight: 600;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+}
+
+.footer-nav a::after {                          /* small ▸ */
+    content: "\25B8";
+    margin-left: 8px;
+    font-size: 8px;
+}
+
+.footer-nav a + a::before {                     /* | divider */
+    content: "|";
+    margin: 0 16px;
+    font-weight: 600;
+}
+
+.footer-copy,
+.footer-nav a,
+.footer-mail {
+    color: #e6e6e6;
+}
+
+.footer-copy {
+    font-size: 12px;
+}
+
+.footer-mail {
+    justify-self: start;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.footer-social {
+    display: grid;
+    gap: 15px;
+}
+
+.site-footer a:hover {
+    opacity: 0.75;
+}
+
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "logo    social"
+            "tagline tagline"
+            "nav     nav"
+            "info    info"
+            "mail    mail"
+            "copy    copy";
+        row-gap: 20px;
+    }
+
+    .footer-social {
+        grid-auto-flow: column;
+        gap: 20px;
+        align-self: center;
+    }
+
+    .footer-info,
+    .footer-copy {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-nav {
+        gap: 20px;
+    }
+
+    .site-footer {
+        padding-block: 40px;
+    }
+
+    .footer-nav {
+        column-gap: 20px;
+    }
+
+    .footer-nav a + a::before {                 /* no leading | when links wrap */
+        display: none;
+    }
+}
+
+/* 11. Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}
